@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+ria = "ria.ria:main_entry_point"
+
+[project]
+name = "ria"
+version = "0.1.0"
+description = "A multi-agent supervisor framework"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain",
+    "langchain-community",
+    "langchain_mcp_adapters",
+    "langchain_ollama",
+    "langgraph_supervisor",
+    "streamlit",
+    "oci"
+]
