@@ -10,6 +10,7 @@ from .prompts import SUPERVISOR_PROMPT, WORKERS
 #               MODEL
 # ===================================== #
 
+# The model is the reasoning engine of your agent.
 llm = get_model()
 
 # ===================================== #
@@ -26,12 +27,14 @@ def _get_prompts():
         globals()[f"{worker}_agent_prompt"] = lambda worker=worker : getattr(prompts_module, f"{worker}_agent_prompt")
         globals()[f"{worker}_subagent_description"] = lambda worker=worker : getattr(prompts_module, f"{worker}_subagent_description")
 
+# You can shape how your agent approaches tasks by providing a prompt.
 _get_prompts()
 
 # ===================================== #
 #               TOOLS
 # ===================================== #
 
+# Tools give agents the ability to take actions.
 tools = get_tools()
 
 # ===================================== #
@@ -40,6 +43,9 @@ tools = get_tools()
 
 agents = []
 
+# create_agent builds a graph-based agent runtime using LangGraph. 
+# A graph consists of nodes (steps) and edges (connections) that define how your agent processes information. 
+# The agent moves through this graph, executing nodes like the model node (which calls the model), the tools node (which executes tools), or middleware.
 def _create_agents():
     """Create the agents"""
     for worker in WORKERS:
@@ -50,6 +56,9 @@ def _create_agents():
         )
         agents.append(globals()[f"{worker}_agent"]())
 
+# Agents combine language models with tools to create systems that can reason about tasks,
+# decide which tools to use, and iteratively work towards solutions.
+# An LLM Agent runs tools in a loop to achieve a goal.
 _create_agents()
 
 # ===================================== #
