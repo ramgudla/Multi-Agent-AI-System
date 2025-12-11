@@ -11,24 +11,28 @@
    ```
 
 3) create a virtual environment.
-
+    ```
     python -m venv .venv
     source venv/bin/activate
     On Windows: venv\Scripts\activate
+    ```
 
 4) Install your package.
-
+     ```
      pip install -e .  # Install in editable mode for development
-     Or, to install from the built wheel:
-     pip install dist/ria-0.1.0-py3-none-any.whl
+     (or)
+     pip install dist/ria-0.1.0-py3-none-any.whl   # to install from the built wheel:
+     ```
 
-5) Run the module.
-
+6) Run the module.
+     ```
      python -m ria.ria
+     ```
 
-6) Run the script.
-
+7) Run the script.
+     ```
      python <project_root>/ria/ria.py
+     ```
 
 
 ######################################
