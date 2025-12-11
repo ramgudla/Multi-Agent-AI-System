@@ -15,7 +15,6 @@ dependencies = [
     "langchain-community",
     "langchain_mcp_adapters",
     "langchain_ollama",
-    "langgraph_supervisor",
     "streamlit",
     "oci"
 ]
