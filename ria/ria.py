@@ -11,14 +11,12 @@ if __package__ == '' or __package__ is None:
     __package__ = 'ria'
     sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# from .react_agents import create_react_supervisor
 from .agents import create_supervisor
 from .utils import extract_ai_message_content
 
 async def chat_ui():
 
     """Main application entry point"""
-    # supervisor = create_react_supervisor()
     supervisor = create_supervisor()
     
     # Streamlit interface
@@ -88,7 +86,6 @@ async def main():
 
     print("User Request:", user_request)
     print("\n" + "="*80 + "\n")
-    # async for step in create_react_supervisor().astream(
     async for step in create_supervisor().astream(
         {"messages": [{"role": "user", "content": user_request}]}
     ):
